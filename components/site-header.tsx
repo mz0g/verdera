@@ -11,14 +11,11 @@ export function SiteHeader() {
       <div className="container flex h-16 items-center px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2 font-bold text-lg text-green-600">
           <Leaf className="h-5 w-5" />
-          <span>EcoTravel</span>
+          <span>Verdera</span>
         </Link>
         <nav className="hidden md:flex ml-6 gap-6">
           <Link href="/" className="text-sm font-medium hover:underline underline-offset-4">
             Stays
-          </Link>
-          <Link href="/flights" className="text-sm font-medium hover:underline underline-offset-4">
-            Flights
           </Link>
           <Link href="/cars" className="text-sm font-medium hover:underline underline-offset-4">
             Cars
@@ -64,9 +61,6 @@ export function SiteHeader() {
             <DropdownMenuContent align="end">
               <DropdownMenuItem asChild>
                 <Link href="/">Stays</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/flights">Flights</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/cars">Cars</Link>

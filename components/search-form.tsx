@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Calendar, MapPin, Users, Plane, Car, Package, TreePine, Heart } from "lucide-react"
+import { Calendar, MapPin, Users, Car, Package, TreePine, Heart } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 import { Button } from "@/components/ui/button"
@@ -42,13 +42,6 @@ export function SearchForm({ defaultTab = "stays" }: SearchFormProps) {
                 onClick={() => router.push("/")}
               >
                 Stays
-              </TabsTrigger>
-              <TabsTrigger
-                value="flights"
-                className="data-[state=active]:bg-green-600 data-[state=active]:text-white"
-                onClick={() => router.push("/flights")}
-              >
-                Flights
               </TabsTrigger>
               <TabsTrigger
                 value="cars"
@@ -152,74 +145,6 @@ export function SearchForm({ defaultTab = "stays" }: SearchFormProps) {
                 <div className="flex items-center gap-2">
                   <Input type="number" defaultValue="2" min="1" className="w-20" />
                   <Button className="w-full bg-green-600 hover:bg-green-700" onClick={() => handleSearch("stays")}>
-                    Search
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </TabsContent>
-
-          <TabsContent value="flights" className="p-0 m-0">
-            <div className="grid gap-4 p-4 md:p-6 md:grid-cols-4">
-              <div className="grid gap-2">
-                <div className="flex items-center gap-2">
-                  <Plane className="h-4 w-4 text-green-600" />
-                  <span className="text-sm font-medium">From</span>
-                </div>
-                <Input placeholder="Departure city" />
-              </div>
-              <div className="grid gap-2">
-                <div className="flex items-center gap-2">
-                  <Plane className="h-4 w-4 text-green-600" />
-                  <span className="text-sm font-medium">To</span>
-                </div>
-                <Input placeholder="Destination city" />
-              </div>
-              <div className="grid gap-2">
-                <div className="flex items-center gap-2">
-                  <Calendar className="h-4 w-4 text-green-600" />
-                  <span className="text-sm font-medium">Depart</span>
-                </div>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant={"outline"}
-                      className={cn(
-                        "w-full justify-start text-left font-normal",
-                        !departDate && "text-muted-foreground",
-                      )}
-                    >
-                      {departDate ? format(departDate, "PPP") : "Select date"}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0">
-                    <CalendarComponent mode="single" selected={departDate} onSelect={setDepartDate} initialFocus />
-                  </PopoverContent>
-                </Popover>
-              </div>
-              <div className="grid gap-2">
-                <div className="flex items-center gap-2">
-                  <Calendar className="h-4 w-4 text-green-600" />
-                  <span className="text-sm font-medium">Return</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button
-                        variant={"outline"}
-                        className={cn(
-                          "w-full justify-start text-left font-normal",
-                          !returnDate && "text-muted-foreground",
-                        )}
-                      >
-                        {returnDate ? format(returnDate, "PPP") : "Select date"}
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0">
-                      <CalendarComponent mode="single" selected={returnDate} onSelect={setReturnDate} initialFocus />
-                    </PopoverContent>
-                  </Popover>
-                  <Button className="bg-green-600 hover:bg-green-700" onClick={() => handleSearch("flights")}>
                     Search
                   </Button>
                 </div>

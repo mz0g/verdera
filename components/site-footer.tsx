@@ -13,7 +13,7 @@ export function SiteFooter() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2 font-bold text-lg text-green-600">
               <Leaf className="h-5 w-5" />
-              <span>EcoTravel</span>
+              <span>Verdera</span>
             </Link>
             <p className="text-sm text-muted-foreground">
               Making sustainable travel accessible to everyone. Explore the world while minimizing your environmental
