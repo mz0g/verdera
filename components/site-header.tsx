@@ -23,9 +23,6 @@ export function SiteHeader() {
           <Link href="/packages" className="text-sm font-medium hover:underline underline-offset-4">
             Packages
           </Link>
-          <Link href="/ecotours" className="text-sm font-medium hover:underline underline-offset-4">
-            Eco Tours
-          </Link>
           <Link href="/volunteering" className="text-sm font-medium hover:underline underline-offset-4">
             Volunteering
           </Link>
@@ -67,9 +64,6 @@ export function SiteHeader() {
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/packages">Packages</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/ecotours">Eco Tours</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/volunteering">Volunteering</Link>

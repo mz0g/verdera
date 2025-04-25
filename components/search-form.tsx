@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Calendar, MapPin, Users, Car, Package, TreePine, Heart } from "lucide-react"
+import { Calendar, MapPin, Users, Car, Package, Heart } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 import { Button } from "@/components/ui/button"
@@ -56,13 +56,6 @@ export function SearchForm({ defaultTab = "stays" }: SearchFormProps) {
                 onClick={() => router.push("/packages")}
               >
                 Packages
-              </TabsTrigger>
-              <TabsTrigger
-                value="ecotours"
-                className="hidden md:block data-[state=active]:bg-green-600 data-[state=active]:text-white"
-                onClick={() => router.push("/ecotours")}
-              >
-                Eco Tours
               </TabsTrigger>
               <TabsTrigger
                 value="volunteering"
@@ -301,70 +294,6 @@ export function SearchForm({ defaultTab = "stays" }: SearchFormProps) {
                     </SelectContent>
                   </Select>
                   <Button className="w-full bg-green-600 hover:bg-green-700" onClick={() => handleSearch("packages")}>
-                    Search
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </TabsContent>
-
-          <TabsContent value="ecotours" className="p-0 m-0">
-            <div className="grid gap-4 p-4 md:p-6 md:grid-cols-4">
-              <div className="grid gap-2">
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-green-600" />
-                  <span className="text-sm font-medium">Destination</span>
-                </div>
-                <Input placeholder="Where do you want to explore?" />
-              </div>
-              <div className="grid gap-2">
-                <div className="flex items-center gap-2">
-                  <Calendar className="h-4 w-4 text-green-600" />
-                  <span className="text-sm font-medium">Start date</span>
-                </div>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant={"outline"}
-                      className={cn(
-                        "w-full justify-start text-left font-normal",
-                        !departDate && "text-muted-foreground",
-                      )}
-                    >
-                      {departDate ? format(departDate, "PPP") : "Select date"}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0">
-                    <CalendarComponent mode="single" selected={departDate} onSelect={setDepartDate} initialFocus />
-                  </PopoverContent>
-                </Popover>
-              </div>
-              <div className="grid gap-2">
-                <div className="flex items-center gap-2">
-                  <TreePine className="h-4 w-4 text-green-600" />
-                  <span className="text-sm font-medium">Tour type</span>
-                </div>
-                <Select defaultValue="wildlife">
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select type" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="wildlife">Wildlife</SelectItem>
-                    <SelectItem value="conservation">Conservation</SelectItem>
-                    <SelectItem value="indigenous">Indigenous</SelectItem>
-                    <SelectItem value="marine">Marine</SelectItem>
-                    <SelectItem value="forest">Forest</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="grid gap-2">
-                <div className="flex items-center gap-2">
-                  <Users className="h-4 w-4 text-green-600" />
-                  <span className="text-sm font-medium">Group size</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Input type="number" defaultValue="2" min="1" className="w-20" />
-                  <Button className="w-full bg-green-600 hover:bg-green-700" onClick={() => handleSearch("ecotours")}>
                     Search
                   </Button>
                 </div>

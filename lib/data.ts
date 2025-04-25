@@ -12,7 +12,7 @@ const imageMap = {
   'Toyota Prius Prime': '/images/toyota.avif',
   'Nissan Leaf': '/images/nissanleaf.webp',
   'Hyundai Ioniq Hybrid': '/images/hyundai-ioniq.avif',
-  
+
   // Locations
   'Costa Rica': '/images/costarica1.jpg',
   'Switzerland': '/images/burgenstock-lucerne.jpg',
@@ -29,7 +29,7 @@ const imageMap = {
   'Kenya': '/images/costarica.jpg',
   'Great Barrier Reef': '/images/portugal.webp',
   'Napa Valley': '/images/burgenstock-lucerne.jpg',
-  
+
   // Accommodations
   'Eco Resort': '/images/hut.jpeg',
   'Mountain View Lodge': '/images/mountainview2.jpg',
@@ -45,19 +45,19 @@ function getImagePath(item: any): string {
   if (item.name && imageMap[item.name]) {
     return imageMap[item.name];
   }
-  
+
   // Try to match by location
   if (item.location) {
     // Check if location contains any of our image map keys
-    const locationKey = Object.keys(imageMap).find(key => 
+    const locationKey = Object.keys(imageMap).find(key =>
       item.location.includes(key)
     );
-    
+
     if (locationKey) {
       return imageMap[locationKey];
     }
   }
-  
+
   // Fallback to a default image
   return '/images/green.webp';
 }
@@ -68,13 +68,13 @@ function getImagePath(item: any): string {
  */
 export function loadData<T extends any[]>(filename: string): T {
   const filePath = path.join(dataDirectory, `${filename}.json`);
-  
+
   try {
     const fileContents = fs.readFileSync(filePath, 'utf8');
     // Remove comments from JSON if any exist
     const jsonString = fileContents.replace(/\/\/.*$/gm, '');
     const data = JSON.parse(jsonString) as T;
-    
+
     // Enhance items with proper image paths
     return data.map(item => ({
       ...item,
@@ -89,10 +89,6 @@ export function loadData<T extends any[]>(filename: string): T {
 // Typed data loaders for specific content types
 export function loadCars() {
   return loadData<any[]>('cars');
-}
-
-export function loadEcoTours() {
-  return loadData<any[]>('ecotours');
 }
 
 export function loadTravel() {
