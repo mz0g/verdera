@@ -63,7 +63,7 @@ export function CarListings() {
                     <Badge variant="outline">Range: {listing.range}</Badge>
                   </div>
                   <div className="flex flex-wrap gap-2 mb-3">
-                    {listing.badges.map((badge, index) => (
+                    {listing.badges.map((badge: string, index: number) => (
                       <Badge key={index} variant="secondary" className="bg-green-100 text-green-800 hover:bg-green-200">
                         {badge}
                       </Badge>
