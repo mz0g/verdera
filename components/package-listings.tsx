@@ -1,13 +1,28 @@
-import { Star, Leaf, Clock, MapPin } from "lucide-react"
+"use client"
+
+import { Star, Leaf, Clock, MapPin, ShoppingCart } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { loadPackages } from "@/lib/data"
+import { loadPackages } from "@/lib/data-static"
+import { useCart } from "@/context/cart-context"
 
 export function PackageListings() {
   const packages = loadPackages();
+  const { addItem } = useCart();
+
+  const handleAddToCart = (pkg: any) => {
+    addItem({
+      id: pkg.id,
+      name: pkg.name,
+      price: pkg.price,
+      type: "package",
+      image: pkg.image,
+      greenScore: pkg.greenScore
+    });
+  };
 
   return (
     <div className="space-y-6">
@@ -82,7 +97,21 @@ export function PackageListings() {
                     <div className="text-sm text-muted-foreground">per person</div>
                     <div className="text-2xl font-bold">${pkg.price}</div>
                   </div>
-                  <Button className="bg-green-600 hover:bg-green-700">View Package</Button>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="outline"
+                      className="bg-green-50 text-green-700 border-green-200 hover:bg-green-100"
+                    >
+                      View Details
+                    </Button>
+                    <Button
+                      className="bg-green-600 hover:bg-green-700"
+                      onClick={() => handleAddToCart(pkg)}
+                    >
+                      <ShoppingCart className="h-4 w-4 mr-2" />
+                      Add to Cart
+                    </Button>
+                  </div>
                 </CardFooter>
               </div>
             </div>

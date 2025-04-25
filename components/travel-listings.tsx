@@ -1,13 +1,28 @@
-import { Star, Leaf } from "lucide-react"
+"use client"
+
+import { Star, Leaf, ShoppingCart } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { loadTravel } from "@/lib/data"
+import { loadTravel } from "@/lib/data-static"
+import { useCart } from "@/context/cart-context"
 
 export function TravelListings() {
   const listings = loadTravel();
+  const { addItem } = useCart();
+
+  const handleAddToCart = (listing: any) => {
+    addItem({
+      id: listing.id,
+      name: listing.name,
+      price: listing.price,
+      type: "stay",
+      image: listing.image,
+      greenScore: listing.greenScore
+    });
+  };
 
   return (
     <div className="space-y-6">
@@ -69,7 +84,21 @@ export function TravelListings() {
                     <div className="text-sm text-muted-foreground">per night</div>
                     <div className="text-2xl font-bold">${listing.price}</div>
                   </div>
-                  <Button className="bg-green-600 hover:bg-green-700">View Deal</Button>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="outline"
+                      className="bg-green-50 text-green-700 border-green-200 hover:bg-green-100"
+                    >
+                      View Details
+                    </Button>
+                    <Button
+                      className="bg-green-600 hover:bg-green-700"
+                      onClick={() => handleAddToCart(listing)}
+                    >
+                      <ShoppingCart className="h-4 w-4 mr-2" />
+                      Add to Cart
+                    </Button>
+                  </div>
                 </CardFooter>
               </div>
             </div>

@@ -22,35 +22,40 @@ export default function DealsPage() {
       name: "Costa Rica Eco Adventure Bundle",
       price: 1899,
       type: "package",
-      image: "/placeholder.svg?height=200&width=300"
+      image: "/placeholder.svg?height=200&width=300",
+      greenScore: 92
     },
     {
       id: 2,
       name: "Iceland Renewable Energy Tour",
       price: 2249,
       type: "package",
-      image: "/placeholder.svg?height=200&width=300"
+      image: "/placeholder.svg?height=200&width=300",
+      greenScore: 95
     },
     {
       id: 3,
       name: "Thailand Sustainable Island Hopping",
       price: 1299,
       type: "package",
-      image: "/placeholder.svg?height=200&width=300"
+      image: "/placeholder.svg?height=200&width=300",
+      greenScore: 88
     },
     {
       id: 4,
       name: "Electric Vehicle Road Trip - California Coast",
       price: 1199,
       type: "package",
-      image: "/placeholder.svg?height=200&width=300"
+      image: "/placeholder.svg?height=200&width=300",
+      greenScore: 90
     },
     {
       id: 5,
       name: "Amazon Rainforest Conservation Retreat",
       price: 1699,
       type: "package",
-      image: "/placeholder.svg?height=200&width=300"
+      image: "/placeholder.svg?height=200&width=300",
+      greenScore: 94
     }
   ]
 

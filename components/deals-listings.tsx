@@ -1,18 +1,18 @@
+"use client"
+
 import { Star, Leaf, ShoppingCart, Percent, Tag } from "lucide-react"
-import { toast } from "@/components/ui/use-toast"
+import { useToast } from "@/hooks/use-toast"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
-import { loadDeals } from "@/lib/data"
+import { loadDeals } from "@/lib/data-static"
+import { useCart } from "@/context/cart-context"
 
 export function DealsListings() {
   const deals = loadDeals();
-  
-  // Keep existing cart functions
-  const addItem = (item: any) => {
-    // ...existing code...
-  }
+  const { addItem } = useCart();
+  const { toast } = useToast();
 
   const handleAddToCart = (deal: any) => {
     addItem({
@@ -20,8 +20,9 @@ export function DealsListings() {
       name: deal.name,
       price: deal.price,
       type: "package",
-      image: deal.image
-    })
+      image: deal.image,
+      greenScore: deal.greenScore
+    });
   }
 
   const handleAddAllToCart = () => {
@@ -32,15 +33,16 @@ export function DealsListings() {
         name: deal.name,
         price: deal.price,
         type: "package",
-        image: deal.image
-      })
-    })
+        image: deal.image,
+        greenScore: deal.greenScore
+      });
+    });
 
     // Show a success toast
     toast({
       title: "All deals added to cart!",
       description: `You've signed up for all ${deals.length} eco-friendly travel deals.`,
-    })
+    });
   }
 
   return (
