@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Amazon Rainforest Conservation Tour",
+    "location": "Brazil",
+    "image": "/placeholder.svg?height=200&width=300",
+    "price": 149,
+    "duration": "Full day",
+    "groupSize": "Max 8 people",
+    "rating": 4.9,
+    "reviews": 243,
+    "greenScore": 96,
+    "badges": ["Wildlife Protection", "Indigenous Communities", "Carbon Neutral"],
+    "description": "Join conservation experts to learn about rainforest protection efforts and support indigenous communities."
+  },
+  {
+    "id": 2,
+    "name": "Coral Reef Restoration Experience",
+    "location": "Great Barrier Reef, Australia",
+    "image": "/placeholder.svg?height=200&width=300",
+    "price": 189,
+    "duration": "Half day",
+    "groupSize": "Max 6 people",
+    "rating": 4.8,
+    "reviews": 187,
+    "greenScore": 95,
+    "badges": ["Marine Conservation", "Educational", "Reef-Safe"],
+    "description": "Help marine biologists restore coral reefs using sustainable techniques. Includes reef-safe snorkeling."
+  },
+  {
+    "id": 3,
+    "name": "Sustainable Vineyard Tour",
+    "location": "Napa Valley, USA",
+    "image": "/placeholder.svg?height=200&width=300",
+    "price": 89,
+    "duration": "4 hours",
+    "groupSize": "Max 10 people",
+    "rating": 4.7,
+    "reviews": 156,
+    "greenScore": 88,
+    "badges": ["Organic Farming", "Renewable Energy", "Water Conservation"],
+    "description": "Visit vineyards practicing organic farming, renewable energy use, and innovative water conservation techniques."
+  },
+  {
+    "id": 4,
+    "name": "Wildlife Sanctuary Volunteer Day",
+    "location": "Kenya",
+    "image": "/placeholder.svg?height=200&width=300",
+    "price": 129,
+    "duration": "Full day",
+    "groupSize": "Max 8 people",
+    "rating": 4.9,
+    "reviews": 203,
+    "greenScore": 97,
+    "badges": ["Animal Welfare", "Conservation", "Education"],
+    "description": "Spend a day helping at a wildlife sanctuary that rehabilitates injured and orphaned animals for release."
+  }
+]

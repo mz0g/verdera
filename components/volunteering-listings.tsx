@@ -4,74 +4,10 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { loadVolunteering } from "@/lib/data"
 
 export function VolunteeringListings() {
-  const listings = [
-    {
-      id: 1,
-      name: "Sea Turtle Conservation Project",
-      organization: "Ocean Guardians",
-      location: "Costa Rica",
-      image: "/placeholder.svg?height=200&width=300",
-      price: "Free (accommodation extra)",
-      duration: "1-4 weeks",
-      rating: 4.9,
-      reviews: 243,
-      greenScore: 98,
-      badges: ["Wildlife Protection", "Marine Conservation", "Hands-on"],
-      description:
-        "Help protect endangered sea turtles by patrolling beaches, relocating nests, and releasing hatchlings.",
-      skills: ["No experience needed", "Training provided", "Physically active"],
-    },
-    {
-      id: 2,
-      name: "Reforestation Initiative",
-      organization: "Forest Futures",
-      location: "Indonesia",
-      image: "/placeholder.svg?height=200&width=300",
-      price: "$350/week (includes accommodation)",
-      duration: "2-12 weeks",
-      rating: 4.8,
-      reviews: 187,
-      greenScore: 95,
-      badges: ["Tree Planting", "Habitat Restoration", "Community Engagement"],
-      description:
-        "Plant trees, monitor forest health, and work with local communities to promote sustainable forestry practices.",
-      skills: ["Basic fitness required", "Training provided", "Community work"],
-    },
-    {
-      id: 3,
-      name: "Organic Farm Volunteer Program",
-      organization: "Sustainable Harvests",
-      location: "New Zealand",
-      image: "/placeholder.svg?height=200&width=300",
-      price: "Work exchange (free accommodation & meals)",
-      duration: "2-8 weeks",
-      rating: 4.7,
-      reviews: 156,
-      greenScore: 94,
-      badges: ["Organic Farming", "Permaculture", "Food Security"],
-      description:
-        "Learn organic farming techniques while helping with planting, harvesting, and sustainable farm management.",
-      skills: ["No experience needed", "Physical work", "Outdoor environment"],
-    },
-    {
-      id: 4,
-      name: "Wildlife Rehabilitation Center",
-      organization: "Animal Allies",
-      location: "South Africa",
-      image: "/placeholder.svg?height=200&width=300",
-      price: "$450/week (includes accommodation)",
-      duration: "2-12 weeks",
-      rating: 4.9,
-      reviews: 203,
-      greenScore: 97,
-      badges: ["Animal Care", "Conservation", "Rehabilitation"],
-      description:
-        "Care for injured and orphaned wildlife, assist with rehabilitation, and help prepare animals for release.",
-      skills: ["Animal handling experience helpful", "Training provided", "Emotionally demanding"],
-    },
-  ]
+  const listings = loadVolunteering();
 
   return (
     <div className="space-y-6">

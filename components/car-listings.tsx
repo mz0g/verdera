@@ -1,74 +1,13 @@
-import { Star, Leaf, Battery, Fuel } from "lucide-react"
+import { Star, Leaf, Users, Battery, Fuel } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { loadCars } from "@/lib/data"
 
 export function CarListings() {
-  const listings = [
-    {
-      id: 1,
-      name: "Tesla Model 3",
-      company: "Green Car Rentals",
-      image: "/placeholder.svg?height=150&width=250",
-      price: 89,
-      rating: 4.9,
-      reviews: 243,
-      greenScore: 98,
-      type: "Electric",
-      seats: 5,
-      range: "315 miles",
-      badges: ["Zero Emissions", "Free Charging", "Autopilot"],
-      description: "100% electric vehicle with zero emissions. Free charging at our partner stations.",
-    },
-    {
-      id: 2,
-      name: "Toyota Prius Prime",
-      company: "EcoDrive",
-      image: "/placeholder.svg?height=150&width=250",
-      price: 65,
-      rating: 4.7,
-      reviews: 187,
-      greenScore: 85,
-      type: "Plug-in Hybrid",
-      seats: 5,
-      range: "640 miles (25 electric)",
-      badges: ["Low Emissions", "Hybrid", "Fuel Efficient"],
-      description:
-        "Plug-in hybrid with excellent fuel economy and reduced emissions compared to conventional vehicles.",
-    },
-    {
-      id: 3,
-      name: "Nissan Leaf",
-      company: "Sustainable Wheels",
-      image: "/placeholder.svg?height=150&width=250",
-      price: 59,
-      rating: 4.6,
-      reviews: 156,
-      greenScore: 95,
-      type: "Electric",
-      seats: 5,
-      range: "226 miles",
-      badges: ["Zero Emissions", "Quick Charge", "Eco-Mode"],
-      description: "All-electric vehicle with zero tailpipe emissions and energy-saving eco-mode.",
-    },
-    {
-      id: 4,
-      name: "Hyundai Ioniq Hybrid",
-      company: "Green Car Rentals",
-      image: "/placeholder.svg?height=150&width=250",
-      price: 55,
-      rating: 4.5,
-      reviews: 203,
-      greenScore: 82,
-      type: "Hybrid",
-      seats: 5,
-      range: "702 miles",
-      badges: ["Low Emissions", "Hybrid", "Eco-Friendly"],
-      description: "Hybrid vehicle with excellent fuel economy and significantly reduced emissions.",
-    },
-  ]
+  const listings = loadCars();
 
   return (
     <div className="space-y-6">

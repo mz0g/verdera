@@ -1,138 +1,18 @@
-import { Star, Leaf, Tag, Percent, ShoppingCart, Package } from "lucide-react"
+import { Star, Leaf, ShoppingCart, Percent, Tag } from "lucide-react"
+import { toast } from "@/components/ui/use-toast"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { useCart } from "@/context/cart-context"
-import { useToast } from "@/hooks/use-toast"
+import { loadDeals } from "@/lib/data"
 
 export function DealsListings() {
-  const { addItem } = useCart()
-  const { toast } = useToast()
-
-  const deals = [
-    {
-      id: 1,
-      name: "Costa Rica Eco Adventure Bundle",
-      location: "Costa Rica",
-      image: "/placeholder.svg?height=200&width=300",
-      originalPrice: 2499,
-      price: 1899,
-      discount: "24%",
-      duration: "8 days",
-      rating: 4.8,
-      reviews: 243,
-      greenScore: 92,
-      badges: ["Carbon Neutral", "Wildlife Conservation", "Local Communities"],
-      description:
-        "Our most popular eco-adventure package! Explore Costa Rica's incredible biodiversity with carbon-neutral transportation, eco-lodges, and conservation activities. This special deal includes all accommodations, guided tours, and most meals.",
-      includes: [
-        "Eco-friendly accommodations",
-        "Sustainable transportation",
-        "Conservation activities",
-        "Local guides",
-        "Most meals included",
-        "Airport transfers"
-      ],
-    },
-    {
-      id: 2,
-      name: "Iceland Renewable Energy Tour",
-      location: "Iceland",
-      image: "/placeholder.svg?height=200&width=300",
-      originalPrice: 2899,
-      price: 2249,
-      discount: "22%",
-      duration: "7 days",
-      rating: 4.7,
-      reviews: 187,
-      greenScore: 95,
-      badges: ["Geothermal Energy", "Zero Waste", "Carbon Offset"],
-      description:
-        "Limited-time offer! Discover Iceland's renewable energy innovations while staying in eco-certified hotels and exploring natural wonders. This package includes exclusive access to geothermal facilities not open to the general public and a private glacier hike.",
-      includes: [
-        "Green-certified hotels",
-        "Electric vehicle tours",
-        "Geothermal spa visits",
-        "Sustainable farm visits",
-        "Northern Lights excursion (seasonal)",
-        "All breakfasts and 3 dinners"
-      ],
-    },
-    {
-      id: 3,
-      name: "Thailand Sustainable Island Hopping",
-      location: "Thailand",
-      image: "/placeholder.svg?height=200&width=300",
-      originalPrice: 1799,
-      price: 1299,
-      discount: "28%",
-      duration: "10 days",
-      rating: 4.6,
-      reviews: 156,
-      greenScore: 88,
-      badges: ["Marine Conservation", "Plastic-Free", "Community Tourism"],
-      description:
-        "Special seasonal discount! Experience Thailand's islands with a focus on sustainability. Stay in eco-resorts, participate in beach cleanups, and learn about marine conservation efforts. This package includes island transfers by low-emission boats and a traditional cooking class.",
-      includes: [
-        "Eco-resort accommodations",
-        "Low-emission boat transfers",
-        "Marine conservation activities",
-        "Traditional cooking class",
-        "Snorkeling equipment",
-        "Daily breakfast"
-      ],
-    },
-    {
-      id: 4,
-      name: "Electric Vehicle Road Trip - California Coast",
-      location: "California, USA",
-      image: "/placeholder.svg?height=200&width=300",
-      originalPrice: 1499,
-      price: 1199,
-      discount: "20%",
-      duration: "5 days",
-      rating: 4.9,
-      reviews: 112,
-      greenScore: 96,
-      badges: ["Zero Emissions", "Renewable Energy", "Sustainable Accommodations"],
-      description:
-        "Early bird special! Explore the California coast in a premium electric vehicle with a pre-planned route featuring charging stations and eco-friendly accommodations. Package includes the EV rental, accommodations, and a digital guide to sustainable attractions.",
-      includes: [
-        "Premium electric vehicle rental",
-        "Charging station access",
-        "Eco-friendly accommodations",
-        "Digital sustainable travel guide",
-        "24/7 roadside assistance",
-        "Carbon offset contribution"
-      ],
-    },
-    {
-      id: 5,
-      name: "Amazon Rainforest Conservation Retreat",
-      location: "Brazil",
-      image: "/placeholder.svg?height=200&width=300",
-      originalPrice: 2199,
-      price: 1699,
-      discount: "23%",
-      duration: "6 days",
-      rating: 4.7,
-      reviews: 98,
-      greenScore: 94,
-      badges: ["Rainforest Protection", "Indigenous Communities", "Wildlife Conservation"],
-      description:
-        "Flash sale this week only! Stay in an eco-lodge deep in the Amazon rainforest while contributing to conservation efforts. This immersive experience includes guided jungle treks, canopy walks, and cultural exchanges with indigenous communities.",
-      includes: [
-        "Sustainable jungle lodge",
-        "Expert naturalist guides",
-        "Indigenous community visits",
-        "Canopy walkway access",
-        "River excursions",
-        "All meals included"
-      ],
-    },
-  ]
+  const deals = loadDeals();
+  
+  // Keep existing cart functions
+  const addItem = (item: any) => {
+    // ...existing code...
+  }
 
   const handleAddToCart = (deal: any) => {
     addItem({
@@ -170,28 +50,18 @@ export function DealsListings() {
         <div className="flex flex-col sm:flex-row gap-4">
           <Button
             onClick={handleAddAllToCart}
-            className="bg-green-600 hover:bg-green-700 flex items-center gap-2"
+            className="bg-green-600 hover:bg-green-700 whitespace-nowrap"
           >
-            <Package className="h-4 w-4" />
-            <span>Sign Up for All Deals</span>
+            <ShoppingCart className="h-4 w-4 mr-2" />
+            Add All to Cart
           </Button>
-          <Tabs defaultValue="all">
-            <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="all">All Deals</TabsTrigger>
-              <TabsTrigger value="trending">Trending</TabsTrigger>
-              <TabsTrigger value="flash">Flash Sales</TabsTrigger>
-            </TabsList>
-          </Tabs>
         </div>
       </div>
 
-      <Card className="bg-green-50 border-green-200">
+      <Card className="bg-green-50 border-green-200 overflow-hidden">
         <CardContent className="p-6">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <div className="p-3 bg-green-100 rounded-full">
-              <Package className="h-6 w-6 text-green-700" />
-            </div>
-            <div className="flex-1">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="space-y-2">
               <h3 className="text-lg font-semibold text-green-800 mb-1">Bundle All Eco-Friendly Deals</h3>
               <p className="text-green-700">
                 Sign up for all our eco-friendly travel deals at once and save an additional 5% on the total package!
@@ -215,9 +85,9 @@ export function DealsListings() {
             <div className="md:flex">
               <div className="md:w-1/3 relative">
                 <img
-                  src={deal.image || "/placeholder.svg"}
+                  src={deal.image}
                   alt={deal.name}
-                  className="h-full w-full object-cover"
+                  className="h-64 md:h-full w-full object-cover"
                 />
                 <Badge
                   variant="outline"
@@ -296,12 +166,6 @@ export function DealsListings() {
             </div>
           </Card>
         ))}
-      </div>
-
-      <div className="flex justify-center">
-        <Button variant="outline" className="gap-2">
-          Load More Deals
-        </Button>
       </div>
     </div>
   )

@@ -4,62 +4,10 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { loadTravel } from "@/lib/data"
 
 export function TravelListings() {
-  const listings = [
-    {
-      id: 1,
-      name: "Eco Resort & Spa",
-      location: "Costa Rica",
-      image: "/placeholder.svg?height=200&width=300",
-      price: 199,
-      rating: 4.8,
-      reviews: 243,
-      greenScore: 92,
-      badges: ["Solar Powered", "Zero Waste", "Organic Food"],
-      description:
-        "Nestled in the rainforest, this eco-resort uses 100% renewable energy and serves locally-sourced organic food.",
-    },
-    {
-      id: 2,
-      name: "Mountain View Lodge",
-      location: "Switzerland",
-      image: "/placeholder.svg?height=200&width=300",
-      price: 249,
-      rating: 4.7,
-      reviews: 187,
-      greenScore: 85,
-      badges: ["Energy Efficient", "Local Produce", "Public Transport"],
-      description:
-        "A carbon-neutral mountain lodge with stunning views, accessible by public transportation and powered by hydroelectricity.",
-    },
-    {
-      id: 3,
-      name: "Coastal Eco Cabins",
-      location: "Portugal",
-      image: "/placeholder.svg?height=200&width=300",
-      price: 159,
-      rating: 4.6,
-      reviews: 156,
-      greenScore: 88,
-      badges: ["Sustainable Building", "Water Conservation", "Local Community"],
-      description:
-        "Beachfront cabins built with sustainable materials, featuring water conservation systems and supporting local communities.",
-    },
-    {
-      id: 4,
-      name: "Urban Green Hotel",
-      location: "Copenhagen, Denmark",
-      image: "/placeholder.svg?height=200&width=300",
-      price: 179,
-      rating: 4.5,
-      reviews: 203,
-      greenScore: 90,
-      badges: ["LEED Certified", "Bike Rental", "Plant-Based Menu"],
-      description:
-        "A LEED-certified urban hotel offering free bike rentals and an award-winning plant-based restaurant menu.",
-    },
-  ]
+  const listings = loadTravel();
 
   return (
     <div className="space-y-6">

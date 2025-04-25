@@ -1,0 +1,63 @@
+[
+  {
+    "id": 1,
+    "name": "Costa Rica Eco Adventure",
+    "location": "Costa Rica",
+    "image": "/placeholder.svg?height=200&width=300",
+    "price": 1999,
+    "duration": "8 days",
+    "rating": 4.9,
+    "reviews": 243,
+    "greenScore": 92,
+    "badges": ["Wildlife Conservation", "Carbon Neutral", "Sustainable Accommodations"],
+    "description": "Explore Costa Rica's biodiversity with low-impact adventures and stays at eco-certified lodges.",
+    "includes": ["Rainforest lodge", "Wildlife sanctuary tours", "Sustainable coffee farm visit", "Carbon offset"]
+  },
+  {
+    "id": 2,
+    "name": "Iceland Renewable Energy Discovery",
+    "location": "Iceland",
+    "image": "/placeholder.svg?height=200&width=300",
+    "price": 2499,
+    "duration": "7 days",
+    "rating": 4.8,
+    "reviews": 187,
+    "greenScore": 95,
+    "badges": ["Geothermal Energy", "Zero Waste", "Carbon Offset"],
+    "description": "Discover Iceland's renewable energy innovations while staying in eco-certified hotels and exploring natural wonders.",
+    "includes": [
+      "Green-certified hotels",
+      "Electric vehicle tours",
+      "Geothermal spa visits",
+      "Sustainable farm visits"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Thailand Sustainable Islands",
+    "location": "Thailand",
+    "image": "/placeholder.svg?height=200&width=300",
+    "price": 1599,
+    "duration": "10 days",
+    "rating": 4.6,
+    "reviews": 156,
+    "greenScore": 88,
+    "badges": ["Marine Conservation", "Plastic-Free", "Local Economy"],
+    "description": "Experience Thailand's islands while participating in marine conservation and supporting local sustainable businesses.",
+    "includes": ["Eco-resorts", "Coral restoration", "Plastic-free initiatives", "Community tourism"]
+  },
+  {
+    "id": 4,
+    "name": "New Zealand Nature Immersion",
+    "location": "New Zealand",
+    "image": "/placeholder.svg?height=200&width=300",
+    "price": 2799,
+    "duration": "12 days",
+    "rating": 4.9,
+    "reviews": 203,
+    "greenScore": 94,
+    "badges": ["Carbon Neutral", "Wildlife Protection", "Indigenous Culture"],
+    "description": "Explore New Zealand's stunning landscapes with carbon-neutral transportation and accommodations that protect native wildlife.",
+    "includes": ["Eco-lodges", "Electric vehicle transport", "Conservation projects", "Maori cultural experiences"]
+  }
+]

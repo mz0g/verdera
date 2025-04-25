@@ -1,35 +1,12 @@
 import { Leaf } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 
+import { Badge } from "@/components/ui/badge"
+import { Card, CardContent } from "@/components/ui/card"
+import { loadDestinations } from "@/lib/data"
+
 export function FeaturedDestinations() {
-  const destinations = [
-    {
-      name: "Costa Rica",
-      image: "/placeholder.svg?height=200&width=300",
-      greenScore: 92,
-      description: "Leader in eco-tourism with protected rainforests and renewable energy",
-    },
-    {
-      name: "Iceland",
-      image: "/placeholder.svg?height=200&width=300",
-      greenScore: 95,
-      description: "Powered by geothermal and hydroelectric energy with pristine landscapes",
-    },
-    {
-      name: "New Zealand",
-      image: "/placeholder.svg?height=200&width=300",
-      greenScore: 90,
-      description: "Committed to conservation with carbon-neutral initiatives and protected areas",
-    },
-    {
-      name: "Slovenia",
-      image: "/placeholder.svg?height=200&width=300",
-      greenScore: 88,
-      description: "Europe's green gem with sustainable tourism practices and natural preservation",
-    },
-  ]
+  const destinations = loadDestinations();
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
