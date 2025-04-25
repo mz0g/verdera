@@ -1,13 +1,28 @@
-import { Star, Leaf, Users, Battery, Fuel } from "lucide-react"
+"use client"
+
+import { Star, Leaf, Users, Battery, Fuel, ShoppingCart } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { loadCars } from "@/lib/data"
+import { loadCars } from "@/lib/data-static"
+import { useCart } from "@/context/cart-context"
 
 export function CarListings() {
   const listings = loadCars();
+  const { addItem } = useCart();
+
+  const handleAddToCart = (listing: any) => {
+    addItem({
+      id: listing.id,
+      name: listing.name,
+      price: listing.price,
+      type: "car",
+      image: listing.image,
+      greenScore: listing.greenScore
+    });
+  };
 
   return (
     <div className="space-y-6">
@@ -76,7 +91,21 @@ export function CarListings() {
                     <div className="text-sm text-muted-foreground">per day</div>
                     <div className="text-2xl font-bold">${listing.price}</div>
                   </div>
-                  <Button className="bg-green-600 hover:bg-green-700">Select Car</Button>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="outline"
+                      className="bg-green-50 text-green-700 border-green-200 hover:bg-green-100"
+                    >
+                      View Details
+                    </Button>
+                    <Button
+                      className="bg-green-600 hover:bg-green-700"
+                      onClick={() => handleAddToCart(listing)}
+                    >
+                      <ShoppingCart className="h-4 w-4 mr-2" />
+                      Add to Cart
+                    </Button>
+                  </div>
                 </CardFooter>
               </div>
             </div>

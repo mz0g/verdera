@@ -1,13 +1,32 @@
-import { Star, Leaf, Calendar, MapPin, Heart } from "lucide-react"
+"use client"
+
+import { Star, Leaf, Calendar, MapPin, Heart, ShoppingCart } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { loadVolunteering } from "@/lib/data"
+import { loadVolunteering } from "@/lib/data-static"
+import { useCart } from "@/context/cart-context"
 
 export function VolunteeringListings() {
   const listings = loadVolunteering();
+  const { addItem } = useCart();
+
+  const handleAddToCart = (listing: any) => {
+    // Extract numeric price from string (e.g., "$250" -> 250)
+    const priceString = listing.price.replace(/[^0-9.]/g, '');
+    const price = parseFloat(priceString) || 0;
+
+    addItem({
+      id: listing.id,
+      name: listing.name,
+      price: price,
+      type: "volunteer",
+      image: listing.image,
+      greenScore: listing.greenScore
+    });
+  };
 
   return (
     <div className="space-y-6">
@@ -90,7 +109,21 @@ export function VolunteeringListings() {
                     <Heart className="h-4 w-4 fill-current" />
                     Earn 100+ Green Score points
                   </div>
-                  <Button className="bg-green-600 hover:bg-green-700">Apply Now</Button>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="outline"
+                      className="bg-green-50 text-green-700 border-green-200 hover:bg-green-100"
+                    >
+                      View Details
+                    </Button>
+                    <Button
+                      className="bg-green-600 hover:bg-green-700"
+                      onClick={() => handleAddToCart(listing)}
+                    >
+                      <ShoppingCart className="h-4 w-4 mr-2" />
+                      Add to Cart
+                    </Button>
+                  </div>
                 </CardFooter>
               </div>
             </div>

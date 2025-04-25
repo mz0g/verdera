@@ -3,7 +3,7 @@ import Link from "next/link"
 
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { loadDestinations } from "@/lib/data"
+import { loadDestinations } from "@/lib/data-static"
 
 export function FeaturedDestinations() {
   const destinations = loadDestinations();
