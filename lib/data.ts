@@ -38,23 +38,35 @@ const imageMap = {
 };
 
 /**
+ * Define the structure of items we'll be processing
+ */
+interface DataItem {
+  name?: string;
+  location?: string;
+  [key: string]: any;
+}
+
+/**
  * Get appropriate image path based on item name or location
  */
-function getImagePath(item: any): string {
+function getImagePath(item: DataItem): string {
   // Try to match by name first
-  if (item.name && imageMap[item.name]) {
-    return imageMap[item.name];
+  if (item.name && typeof item.name === 'string') {
+    const imagePath = imageMap[item.name as keyof typeof imageMap];
+    if (imagePath) {
+      return imagePath;
+    }
   }
 
   // Try to match by location
-  if (item.location) {
+  if (item.location && typeof item.location === 'string') {
     // Check if location contains any of our image map keys
     const locationKey = Object.keys(imageMap).find(key =>
-      item.location.includes(key)
+      item.location?.includes(key)
     );
 
     if (locationKey) {
-      return imageMap[locationKey];
+      return imageMap[locationKey as keyof typeof imageMap];
     }
   }
 
@@ -66,7 +78,7 @@ function getImagePath(item: any): string {
  * Loads data from a JSON file in the data directory
  * Enhances items with proper image paths
  */
-export function loadData<T extends any[]>(filename: string): T {
+export function loadData<T extends DataItem[]>(filename: string): T {
   const filePath = path.join(dataDirectory, `${filename}.json`);
 
   try {
@@ -88,25 +100,25 @@ export function loadData<T extends any[]>(filename: string): T {
 
 // Typed data loaders for specific content types
 export function loadCars() {
-  return loadData<any[]>('cars');
+  return loadData<DataItem[]>('cars');
 }
 
 export function loadTravel() {
-  return loadData<any[]>('travel');
+  return loadData<DataItem[]>('travel');
 }
 
 export function loadVolunteering() {
-  return loadData<any[]>('volunteering');
+  return loadData<DataItem[]>('volunteering');
 }
 
 export function loadDeals() {
-  return loadData<any[]>('deals');
+  return loadData<DataItem[]>('deals');
 }
 
 export function loadPackages() {
-  return loadData<any[]>('packages');
+  return loadData<DataItem[]>('packages');
 }
 
 export function loadDestinations() {
-  return loadData<any[]>('destinations');
+  return loadData<DataItem[]>('destinations');
 }

@@ -33,23 +33,35 @@ const imageMap: Record<string, string> = {
 };
 
 /**
+ * Define the structure of items we'll be processing
+ */
+interface DataItem {
+  name?: string;
+  location?: string;
+  [key: string]: any;
+}
+
+/**
  * Get appropriate image path based on item name or location
  */
-function getImagePath(item: any): string {
+function getImagePath(item: DataItem): string {
   // Try to match by name first
-  if (item.name && imageMap[item.name]) {
-    return imageMap[item.name];
+  if (item.name && typeof item.name === 'string') {
+    const imagePath = imageMap[item.name as keyof typeof imageMap];
+    if (imagePath) {
+      return imagePath;
+    }
   }
 
   // Try to match by location
-  if (item.location) {
+  if (item.location && typeof item.location === 'string') {
     // Check if location contains any of our image map keys
     const locationKey = Object.keys(imageMap).find(key =>
-      item.location.includes(key)
+      item.location?.includes(key)
     );
 
     if (locationKey) {
-      return imageMap[locationKey];
+      return imageMap[locationKey as keyof typeof imageMap];
     }
   }
 
@@ -66,7 +78,7 @@ import packagesData from '@/data/packages.json';
 import destinationsData from '@/data/destinations.json';
 
 // Process data with image paths
-const processData = <T extends any[]>(data: T): T => {
+const processData = <T extends DataItem[]>(data: T): T => {
   return data.map(item => ({
     ...item,
     image: getImagePath(item)
