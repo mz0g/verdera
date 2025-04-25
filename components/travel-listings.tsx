@@ -63,7 +63,7 @@ export function TravelListings() {
                   </div>
                 </CardHeader>
                 <CardContent className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex flex-wrap gap-2 mb-2">
                     <Badge
                       variant="outline"
                       className="bg-green-50 text-green-700 border-green-200 flex items-center gap-1"
